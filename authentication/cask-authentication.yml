@@ -1,0 +1,37 @@
+generated: '2026-07-20'
+method: searched
+source: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477692124/Microservices+Introduction
+docs: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477692124/Microservices+Introduction
+summary:
+  types:
+  - http
+  http_schemes:
+  - bearer
+  oauth2_flows: []
+  api_key_in: []
+  optional: true
+notes: >-
+  Authentication on CDAP is conditional on cluster configuration. When security.enabled=true in
+  cdap-site.xml, every call to the Microservices (HTTP RESTful) API must be authenticated: the client
+  first obtains an access token from the CDAP authentication server and then supplies it on every
+  request. For CDAP-issued access tokens the authentication scheme must always be Bearer. When
+  security.authorization.enabled=true, authenticated calls are additionally authorization-checked
+  against CDAP authorization policies, and an authenticated-but-unprivileged caller receives 403.
+  An unauthenticated call against a security-enabled cluster receives 401.
+schemes:
+- name: cdapAccessToken
+  type: http
+  scheme: bearer
+  in: header
+  header: Authorization
+  format: 'Authorization: Bearer <access-token>'
+  issued_by: CDAP authentication server
+  condition: required when security.enabled=true in cdap-site.xml
+  sources:
+  - https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477692124/Microservices+Introduction
+authorization:
+  model: policy-based privileges on CDAP entities
+  condition: enforced when security.authorization.enabled=true in cdap-site.xml
+  failure_status: 403
+  management_api: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477790661/Security+Microservices
+cli_credential_cache: ~/.cdap.accesstoken.<hostname>
