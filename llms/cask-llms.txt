@@ -1,0 +1,62 @@
+# Cask (CDAP)
+
+> Cask Data, Inc. was the a16z-backed big-data startup that built and open-sourced CDAP, the Cask Data
+> Application Platform — a framework for building and running data analytic applications and data
+> pipelines on Hadoop, Spark, Kubernetes, and the cloud. Cask was acquired by Google Cloud. CDAP
+> continues as an Apache-2.0 open source project at github.com/cdapio and powers Google Cloud Data
+> Fusion. CDAP's programmatic surface is its HTTP RESTful "Microservices" API, served under a /v3 path
+> prefix from a self-hosted CDAP router. Cask's own cask.co domain no longer serves company content.
+
+Key facts for agents: CDAP is self-hosted software, not a vendor-operated SaaS API. There is no public
+API host, no signup, no API keys, and no rate limits. The base URL is http://<host>:<port> where port
+defaults to 11015 (router.bind.port), or 10443 over TLS (router.ssl.server.port). All resources are
+scoped by namespace: /v3/namespaces/<namespace-id>/... The reserved namespaces are cdap, default, and
+system. When security.enabled=true, every call must carry "Authorization: Bearer <access-token>" with a
+token obtained from the CDAP authentication server. There is no OpenAPI definition, no OAuth scope
+surface, no webhooks or events, and no documented idempotency or pagination contract.
+
+## APIs
+
+- [CDAP Microservices API](https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477692124/Microservices+Introduction): Conventions, base URL, namespaces, status codes, and security for the whole /v3 surface.
+- [CDAP Microservices Guide](https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477593807/CDAP+Microservices+Guide): Index of all 21 microservice families.
+- [Lifecycle Microservices](https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477560983/Lifecycle+Microservices): Deploy, start, stop, and manage applications and programs.
+- [Artifact Microservices](https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477692148/Artifact+Microservices): Manage artifacts, versions, plugins, and application classes.
+- [Metadata Microservices](https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477692187/Metadata+Microservices): Search, annotate, and retrieve metadata and lineage.
+- [Metrics Microservices](https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477692194/Metrics+Microservices): Query system and user program metrics.
+- [Logging Microservices](https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477790558/Logging+Microservices): Retrieve and download system and application logs.
+- [Namespace Microservices](https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477561041/Namespace+Microservices): Create, list, and delete namespaces.
+- [Pipeline Microservices](https://cdap.atlassian.net/wiki/spaces/DOCS/pages/975929350/Pipeline+Microservices): Create, deploy, run, and inspect data pipelines.
+- [Replication Microservices](https://cdap.atlassian.net/wiki/spaces/DOCS/pages/1765507073/Replication+Microservices): Manage change-data-capture replication jobs.
+- [Security Microservices](https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477790661/Security+Microservices): Secure store keys, privileges, roles, and policies.
+- [Workflow Microservices](https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477790711/Workflow+Microservices): Run records, node states, local datasets, and workflow tokens.
+- [Preferences Microservices](https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477561058/Preferences+Microservices): Hierarchical configuration key/value pairs.
+
+## Docs
+
+- [CDAP Documentation Wiki](https://cdap.atlassian.net/wiki/spaces/DOCS/overview): Canonical live documentation. Note: the historical host docs.cdap.io serves an expired TLS certificate and redirects here.
+- [Get Started](https://cdap.io/get-started/): Cloud and on-premises installation paths.
+- [CDAP Sandbox](https://cdap.atlassian.net/wiki/spaces/DOCS/pages/480346167/CDAP+Sandbox): Single-process local CDAP instance for evaluation.
+- [Command Line Reference](https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477560940/Command+Line+Reference): The CDAP CLI.
+- [Community](https://cdap.io/community/): Support channels.
+- [Blog](https://medium.com/cdapio): CDAP engineering blog.
+
+## Artifacts
+
+- [Authentication](authentication/cask-authentication.yml): Bearer access token profile.
+- [Conventions](conventions/cask-conventions.yml): Base URL, versioning, namespaces, path encoding, error envelope.
+- [Error catalog](errors/cask-problem-types.yml): The cross-cutting HTTP status-code table.
+- [Data model](data-model/cask-data-model.yml): Entity graph derived from the /v3 resource hierarchy.
+- [Lifecycle](lifecycle/cask-lifecycle.yml): Versioning, release cadence, acquisition and project status.
+- [Changelog](changelog/cask-changelog.yml): Recent CDAP releases.
+- [CLI](cli/cask-cli.yml): CDAP CLI command surface.
+- [Sandbox](sandbox/cask-sandbox.yml): Local sandbox install paths and default endpoints.
+- [Packages](packages/cask-packages.yml): Maven Central coordinates (io.cdap.cdap, legacy co.cask.cdap).
+- [Conformance](conformance/cask-conformance.yml): Standards asserted and explicitly not met.
+- [Domain security](security/cask-domain-security.yml): TLS/DNS posture, including the expired docs.cdap.io certificate.
+- [Well-known](well-known/cask-well-known.yml): No /.well-known/ documents are published.
+
+## Source
+
+- [GitHub organization (cdapio)](https://github.com/cdapio): 58 public repositories, Apache-2.0.
+- [cdapio/cdap](https://github.com/cdapio/cdap): The CDAP platform itself.
+- [Maven Central io.cdap.cdap](https://central.sonatype.com/namespace/io.cdap.cdap): Current client and platform artifacts.

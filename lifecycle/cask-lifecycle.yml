@@ -1,0 +1,50 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/cdapio/cdap/releases + https://cdap.atlassian.net/wiki/spaces/DOCS
+versioning:
+  scheme: uri-path
+  api_version: v3
+  product_versioning: semver (major.minor.patch, e.g. 6.11.1)
+  current_release: 6.11.1
+  current_release_date: '2025-08-28'
+  docs: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477692124/Microservices+Introduction
+company_status:
+  state: acquired
+  acquirer: Google Cloud
+  evidence: >-
+    The GitHub organization that hosts CDAP (github.com/cdapio, formerly caskdata) carries the
+    description "CDAP is now part of Google Cloud"; cdap.io presents Google Cloud Data Fusion
+    (powered by CDAP) as the featured production deployment path.
+  company_domain_status: cask.co no longer serves Cask content (WP Engine parking host, HTTP 404)
+project_status:
+  state: maintained-open-source
+  license: Apache-2.0
+  repository: https://github.com/cdapio/cdap
+  last_pushed: '2026-07-13'
+  stars: 789
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: false
+  note: >-
+    No published deprecation or sunset policy was found. CDAP does mark superseded surfaces in the
+    documentation title itself (see deprecated_surfaces), but there is no RFC 8594 Sunset/Deprecation
+    header contract and no dated deprecation schedule, so no Deprecation pointer is claimed.
+deprecated_surfaces:
+- name: Dataset Microservices (Deprecated)
+  url: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477692177/Dataset+Microservices+Deprecated
+- name: Cube Dataset (Deprecated)
+  url: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/480313663/Cube+Dataset+Deprecated
+sla:
+  url: null
+  note: Self-hosted open source software; no vendor SLA. SLAs apply to Google Cloud Data Fusion instead.
+status_page: null
+status_page_note: >-
+  No status page exists or is applicable — CDAP is self-hosted software with no vendor-operated
+  service endpoint, so no StatusPage pointer is claimed.
+documentation_health:
+  issue: >-
+    The historical documentation host docs.cdap.io serves a certificate that expired on 2023-09-27,
+    so browsers and standard HTTP clients cannot reach it. Bypassing the certificate error reveals a
+    301 to the CDAP Confluence wiki, which is the live canonical documentation.
+  canonical_docs: https://cdap.atlassian.net/wiki/spaces/DOCS/overview

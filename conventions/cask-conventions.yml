@@ -1,0 +1,57 @@
+generated: '2026-07-20'
+method: searched
+source: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477692124/Microservices+Introduction
+docs: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477593807/CDAP+Microservices+Guide
+base_url:
+  pattern: http://<host>:<port>
+  default_port: 11015
+  config_key: router.bind.port
+  tls_port: 10443
+  tls_config_key: router.ssl.server.port
+  tls_note: When SSL is enabled for CDAP the base URL uses https and the port becomes router.ssl.server.port.
+  example: http://localhost:11015
+versioning:
+  style: uri-path
+  current: v3
+  example: PUT /v3/namespaces/<namespace-id>/apps/<app-id>
+tenancy:
+  unit: namespace
+  path_segment: /v3/namespaces/<namespace-id>/
+  reserved:
+  - cdap
+  - default
+  - system
+  reserved_note: >-
+    The cdap and system namespaces cannot be used directly by users; default may be used by anyone.
+    Reserved namespaces cannot be deleted.
+  identifier_charset: letters (a-z, A-Z), digits (0-9), hyphens (-), and underscores (_)
+  identifier_limits: no size limit on identifier length nor on the number of namespaces
+path_parameters:
+  encoding: percent-encoding ("%hh") per RFC 3986
+  rule: >-
+    Reserved and unsafe characters must be percent-encoded. In general any character that is not a
+    letter, a digit, or one of $-_.+!*'() should be encoded.
+  documentation_convention: Variables to be replaced are written in angle brackets, e.g. <namespace-id>.
+authentication:
+  style: bearer-token
+  header: 'Authorization: Bearer <access-token>'
+  conditional: only when security.enabled=true
+  artifact: authentication/cask-authentication.yml
+errors:
+  envelope: plain HTTP status codes (no RFC 9457 problem+json)
+  artifact: errors/cask-problem-types.yml
+idempotency:
+  documented: false
+  note: >-
+    CDAP publishes no idempotency-key contract. Its write surface is largely declarative
+    (PUT of an application or artifact at a stable path), but no Idempotency-Key header or
+    replay-safety guarantee is documented, so no Idempotency pointer is claimed.
+pagination:
+  documented: false
+  note: No cross-cutting pagination convention is documented in the Microservices Introduction.
+rate_limiting:
+  documented: false
+  note: >-
+    CDAP is self-hosted software rather than a metered vendor service; no rate-limit signaling
+    headers are documented.
+lifecycle_artifact: lifecycle/cask-lifecycle.yml

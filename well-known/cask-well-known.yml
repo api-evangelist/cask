@@ -1,0 +1,23 @@
+generated: '2026-07-20'
+method: searched
+source: live probes of /.well-known/ on the surviving Cask/CDAP hosts
+result: none
+notes: >-
+  Neither cdap.io nor the CDAP project publishes any /.well-known/ discovery documents. A
+  security.txt is served at cdap.atlassian.net, but that belongs to Atlassian (the Confluence Cloud
+  vendor hosting the CDAP documentation wiki) and is NOT a Cask/CDAP vulnerability disclosure
+  program, so it is deliberately not recorded as one here.
+host: https://cdap.io
+documents:
+- path: /.well-known/security.txt
+  status: 404
+- path: /.well-known/openid-configuration
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  status: 404
+- path: /.well-known/api-catalog
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404
+- path: /security.txt
+  status: 404

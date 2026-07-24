@@ -1,20 +1,251 @@
 aid: cask
 name: Cask
-description: Cask is a company surfaced as a portfolio company of a16z and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Cask Data, Inc. was the enterprise big-data startup, backed by Andreessen Horowitz, that built and
+  open-sourced CDAP — the Cask Data Application Platform — a framework for building and running data
+  analytic applications and data pipelines on Hadoop, Spark, Kubernetes, and the cloud. Cask was
+  acquired by Google Cloud; CDAP continues as an Apache-2.0 open source project under the
+  github.com/cdapio organization and powers Google Cloud Data Fusion. CDAP's programmatic surface is
+  its HTTP RESTful "Microservices" API — 21 documented service families (Lifecycle, Artifact, Metadata,
+  Metrics, Logging, Namespace, Pipeline, Preferences, Profile, Provisioners, Replication, Reports,
+  Security, Service, Workflow, Monitor, Dashboard, Configuration, Transaction Service, System Workers)
+  served under a /v3 path prefix from a self-hosted CDAP router, with Bearer access tokens issued by the
+  CDAP authentication server. The company's own cask.co domain and developer portal are gone; the
+  surviving surfaces are cdap.io, the CDAP documentation wiki, the cdapio GitHub organization, and the
+  io.cdap.cdap / co.cask.cdap artifact groups on Maven Central.
 url: https://raw.githubusercontent.com/api-evangelist/cask/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/cask.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - a16z
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-status: acquired
+x-acquired-by: Google Cloud
+x-successor: CDAP (github.com/cdapio) / Google Cloud Data Fusion
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
-apis: []
+- Big Data
+- Data Analytics
+- Data Pipelines
+- Data Integration
+- ETL
+- Hadoop
+- Spark
+- Open Source
+- CDAP
+- Metadata
+- Data Governance
+- Acquired
+apis:
+- aid: cask:cdap-microservices
+  name: CDAP Microservices API
+  description: >-
+    The CDAP HTTP RESTful API, documented as "Microservices". All endpoints sit under a /v3 path prefix
+    on a self-hosted CDAP router (default port 11015, or 10443 when SSL is enabled), and are scoped by
+    namespace (/v3/namespaces/<namespace-id>/...). When security is enabled every call must carry an
+    Authorization: Bearer <access-token> header issued by the CDAP authentication server.
+  humanURL: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477692124/Microservices+Introduction
+  baseURL: http://localhost:11015/v3
+  x-deployment: self-hosted
+  x-base-url-note: >-
+    CDAP is self-hosted software; there is no vendor-operated public API host. The documented base URL is
+    http://<host>:<port> where port defaults to 11015 (router.bind.port), or 10443 when SSL is enabled
+    (router.ssl.server.port). localhost:11015 is the value CDAP's own documentation uses in its curl examples.
+  tags:
+  - CDAP
+  - REST
+  - Microservices
+  properties:
+  - type: Documentation
+    url: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477593807/CDAP+Microservices+Guide
+  - type: APIReference
+    url: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477692124/Microservices+Introduction
+  - type: Authentication
+    url: authentication/cask-authentication.yml
+  - type: ErrorCatalog
+    url: errors/cask-problem-types.yml
+- aid: cask:cdap-lifecycle
+  name: CDAP Lifecycle Microservices
+  description: >-
+    Deploy, start, stop, and manage the lifecycle of CDAP applications and the programs they contain
+    within a namespace.
+  humanURL: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477560983/Lifecycle+Microservices
+  baseURL: http://localhost:11015/v3
+  tags:
+  - Lifecycle
+  - Applications
+  - Programs
+- aid: cask:cdap-artifact
+  name: CDAP Artifact Microservices
+  description: >-
+    Manage CDAP artifacts — the packaged application and plugin JARs that applications are created from —
+    including deployment, versioning, and plugin inspection.
+  humanURL: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477692148/Artifact+Microservices
+  baseURL: http://localhost:11015/v3
+  tags:
+  - Artifacts
+  - Plugins
+- aid: cask:cdap-metadata
+  name: CDAP Metadata Microservices
+  description: >-
+    Search, annotate, and retrieve business and technical metadata and lineage for CDAP entities such as
+    applications, datasets, programs, and fields.
+  humanURL: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477692187/Metadata+Microservices
+  baseURL: http://localhost:11015/v3
+  tags:
+  - Metadata
+  - Lineage
+  - Data Governance
+- aid: cask:cdap-metrics
+  name: CDAP Metrics Microservices
+  description: >-
+    Query the metrics CDAP collects for system and user programs, including time-series queries across
+    metric contexts and tags.
+  humanURL: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477692194/Metrics+Microservices
+  baseURL: http://localhost:11015/v3
+  tags:
+  - Metrics
+  - Monitoring
+- aid: cask:cdap-logging
+  name: CDAP Logging Microservices
+  description: >-
+    Retrieve and download logs emitted by CDAP system services and by user applications and programs,
+    with filtering by time range and log level.
+  humanURL: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477790558/Logging+Microservices
+  baseURL: http://localhost:11015/v3
+  tags:
+  - Logging
+  - Observability
+- aid: cask:cdap-namespace
+  name: CDAP Namespace Microservices
+  description: >-
+    Create, list, and delete CDAP namespaces — the multi-tenancy boundary that isolates applications,
+    datasets, and metadata. The cdap, default, and system namespaces are reserved.
+  humanURL: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477561041/Namespace+Microservices
+  baseURL: http://localhost:11015/v3
+  tags:
+  - Namespaces
+  - Multi-tenancy
+- aid: cask:cdap-pipeline
+  name: CDAP Pipeline Microservices
+  description: >-
+    Programmatically create, deploy, run, and inspect CDAP data pipelines (the Hydrator / Data Fusion
+    pipeline application type) and their plugin configurations.
+  humanURL: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/975929350/Pipeline+Microservices
+  baseURL: http://localhost:11015/v3
+  tags:
+  - Pipelines
+  - ETL
+  - Data Integration
+- aid: cask:cdap-replication
+  name: CDAP Replication Microservices
+  description: >-
+    Manage CDAP replication (change data capture) jobs that stream changes from source databases into
+    analytic targets such as BigQuery.
+  humanURL: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/1765507073/Replication+Microservices
+  baseURL: http://localhost:11015/v3
+  tags:
+  - Replication
+  - CDC
+  - Data Integration
+- aid: cask:cdap-security
+  name: CDAP Security Microservices
+  description: >-
+    Manage CDAP secure store keys and authorization privileges, roles, and policies for principals
+    operating against a security-enabled CDAP cluster.
+  humanURL: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477790661/Security+Microservices
+  baseURL: http://localhost:11015/v3
+  tags:
+  - Security
+  - Authorization
+  - Secure Store
+- aid: cask:cdap-workflow
+  name: CDAP Workflow Microservices
+  description: >-
+    Inspect and control CDAP workflows — multi-node program orchestration — including run records, node
+    states, local datasets, and workflow tokens.
+  humanURL: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477790711/Workflow+Microservices
+  baseURL: http://localhost:11015/v3
+  tags:
+  - Workflows
+  - Orchestration
+- aid: cask:cdap-preferences
+  name: CDAP Preferences Microservices
+  description: >-
+    Read and write preferences — the hierarchical configuration key/value pairs resolved across the
+    instance, namespace, application, and program scopes.
+  humanURL: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477561058/Preferences+Microservices
+  baseURL: http://localhost:11015/v3
+  tags:
+  - Preferences
+  - Configuration
+common:
+- type: DeveloperPortal
+  url: https://cdap.io/
+- type: Documentation
+  url: https://cdap.atlassian.net/wiki/spaces/DOCS/overview
+- type: APIReference
+  url: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477593807/CDAP+Microservices+Guide
+- type: GettingStarted
+  url: https://cdap.io/get-started/
+- type: GitHubOrganization
+  url: https://github.com/cdapio
+- type: Support
+  url: https://cdap.io/community/
+- type: Blog
+  url: https://medium.com/cdapio
+- type: TermsOfService
+  url: https://policies.google.com/terms
+- type: PrivacyPolicy
+  url: https://policies.google.com/privacy
+- type: Packages
+  url: packages/cask-packages.yml
+- type: SDKs
+  url: packages/cask-packages.yml
+- type: Authentication
+  url: authentication/cask-authentication.yml
+- type: Conventions
+  url: conventions/cask-conventions.yml
+- type: ErrorCatalog
+  url: errors/cask-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/cask-lifecycle.yml
+- type: ChangeLog
+  url: changelog/cask-changelog.yml
+- type: CLI
+  url: cli/cask-cli.yml
+- type: Sandbox
+  url: sandbox/cask-sandbox.yml
+- type: DataModel
+  url: data-model/cask-data-model.yml
+- type: Conformance
+  url: conformance/cask-conformance.yml
+- type: WellKnown
+  url: well-known/cask-well-known.yml
+- type: DomainSecurity
+  url: security/cask-domain-security.yml
+- type: LLMsTxt
+  url: llms/cask-llms.txt
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 13
+  pass: local-v1
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

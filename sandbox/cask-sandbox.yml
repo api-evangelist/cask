@@ -1,0 +1,40 @@
+generated: '2026-07-20'
+method: searched
+source: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/480346167/CDAP+Sandbox
+docs: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/480346167/CDAP+Sandbox
+name: CDAP Sandbox
+model: self-hosted local instance
+description: >-
+  CDAP does not offer a vendor-hosted test tenant with test-vs-live API keys. Its sandbox is a real,
+  full CDAP instance you run yourself — a single-process package containing everything needed to
+  experiment with data applications on a laptop or desktop, including the CDAP UI and the CDAP CLI.
+  The Cloud Sandbox is functionally identical to the Local Sandbox and is distributed through cloud
+  marketplaces.
+test_vs_live:
+  separation: deployment-level, not credential-level
+  note: >-
+    There are no test/live key prefixes or modes. A sandbox is simply a separate CDAP instance; the
+    same /v3 Microservices API is served. The `default` namespace is the conventional scratch space.
+endpoints:
+  default: http://localhost:11015
+  cli_prompt: 'cdap (http://localhost:11015/namespace:default)>'
+  default_namespace: default
+security:
+  note: >-
+    A sandbox typically runs with security.enabled=false, in which case no Authorization header is
+    required. No published test credentials or fixture tokens exist.
+install_methods:
+- name: Local Sandbox (Linux / Mac OS X)
+  url: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/480313428/Installing+the+CDAP+Sandbox+on+Linux+and+Mac+OSX
+- name: Docker image
+  url: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/480379010/Installing+the+CDAP+Sandbox+Docker+Image
+- name: Virtual machine image
+  url: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/480378983/Installing+the+CDAP+Sandbox+Virtual+Machine+Image
+cloud_evaluation:
+- name: Google Cloud Data Fusion Developer Edition (powered by CDAP)
+  url: https://console.cloud.google.com/data-fusion
+test_values: []
+test_values_note: >-
+  CDAP publishes no magic test identifiers, test cards, or fixture tokens — none are invented here.
+example_call: |
+  curl -w"\n" -X PUT "http://localhost:11015/v3/namespaces/default/apps/who"

@@ -1,0 +1,44 @@
+generated: '2026-07-20'
+method: derived
+source: >-
+  Derived from the CDAP Microservices Introduction and the cdapio/cdap repository; no vendor
+  compliance program is published.
+standards:
+- id: rfc3986-uri
+  conforms: true
+  evidence: >-
+    Path parameters must be percent-encoded per RFC 3986; the documentation cites the RFC by name.
+- id: rfc6750-bearer-token
+  conforms: true
+  evidence: >-
+    Access tokens are sent as "Authorization: Bearer <access-token>"; the documentation states the
+    scheme must always be Bearer for CDAP-issued tokens.
+- id: http-status-semantics
+  conforms: true
+  evidence: >-
+    A documented cross-cutting status-code table covering 200/400/401/403/404/405/409/500/501.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors are plain HTTP status codes; no application/problem+json media type is used.
+- id: oauth2
+  conforms: false
+  evidence: >-
+    Tokens are issued by the CDAP authentication server; no OAuth 2.0 authorization-server metadata,
+    flows, or scope surface is published.
+- id: openidconnect
+  conforms: false
+- id: openapi
+  conforms: false
+  evidence: No OpenAPI/Swagger definition is published for the Microservices API.
+- id: asyncapi
+  conforms: false
+  evidence: No event, streaming, or webhook API surface is published.
+- id: apache-2.0
+  conforms: true
+  evidence: cdapio/cdap is licensed Apache-2.0.
+compliance_program:
+  published: false
+  note: >-
+    No SOC 2, ISO 27001, PCI DSS, HIPAA, or FedRAMP certification is published by Cask or the CDAP
+    project. Compliance posture for the managed successor belongs to Google Cloud Data Fusion, not to
+    this provider, so no Compliance or TrustCenter pointer is claimed.

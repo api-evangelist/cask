@@ -1,0 +1,44 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/cdapio/cdap/releases
+docs: https://cdap.atlassian.net/wiki/spaces/DOCS
+scheme: semver
+current_version: 6.11.1
+notes: >-
+  CDAP publishes tagged GitHub releases on the cdapio/cdap repository; longer-form per-release notes
+  are published as "CDAP Release <version>" pages in the CDAP documentation wiki. Only the recent
+  window is captured here — the live release feed is the source of truth.
+entries:
+- version: 6.11.1
+  date: '2025-08-28'
+  url: https://github.com/cdapio/cdap/releases/tag/v6.11.1
+- version: 6.11.0
+  date: '2025-03-19'
+  url: https://github.com/cdapio/cdap/releases/tag/v6.11.0
+- version: 6.10.1
+  date: '2024-05-29'
+  url: https://github.com/cdapio/cdap/releases/tag/v6.10.1
+- version: 6.10.0
+  date: '2024-01-11'
+  url: https://github.com/cdapio/cdap/releases/tag/v6.10.0
+- version: 6.9.2
+  date: '2023-09-02'
+  url: https://github.com/cdapio/cdap/releases/tag/v6.9.2
+- version: 6.9.1
+  date: '2023-06-05'
+  url: https://github.com/cdapio/cdap/releases/tag/v6.9.1
+- version: 6.8.3
+  date: '2023-06-01'
+  url: https://github.com/cdapio/cdap/releases/tag/v6.8.3
+- version: 6.8.2
+  date: '2023-04-14'
+  url: https://github.com/cdapio/cdap/releases/tag/v6.8.2
+wiki_release_notes:
+- version: 6.3.0
+  url: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/994377749/CDAP+Release+6.3.0
+- version: 6.2.3
+  url: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/741146890/CDAP+Release+6.2.3
+- version: 6.2.0
+  url: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/554500352/CDAP+Release+6.2.0
+- version: 6.1.4
+  url: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/740884481/CDAP+Release+6.1.4

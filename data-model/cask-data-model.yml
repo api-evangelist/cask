@@ -1,0 +1,97 @@
+generated: '2026-07-20'
+method: derived
+source: >-
+  Derived from the /v3 resource paths published across the CDAP Microservices Guide pages
+  (Namespace, Lifecycle, Artifact, Metadata, Preferences Microservices).
+docs: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477593807/CDAP+Microservices+Guide
+notes: >-
+  CDAP publishes no OpenAPI definition, so this entity graph is derived from the documented URL
+  hierarchy rather than from schema $ref links. Every path fragment cited below appears verbatim in
+  the CDAP documentation.
+root_path: /v3
+entities:
+- name: namespace
+  path: /v3/namespaces/<namespace-id>
+  description: >-
+    The multi-tenancy boundary isolating applications, artifacts, datasets, and metadata.
+    cdap, default, and system are reserved.
+  identifier_charset: a-z A-Z 0-9 - _
+- name: application
+  path: /v3/namespaces/<namespace-id>/apps/<app-id>
+  description: A deployed CDAP application, created from an artifact.
+- name: application_version
+  path: /v3/namespaces/<namespace-id>/apps/<app-id>/versions
+  description: Versions of a deployed application.
+- name: artifact
+  path: /v3/namespaces/<namespace-id>/artifacts/<artifact-name>/versions/<version>
+  description: A packaged application or plugin JAR that applications are created from.
+- name: plugin
+  path: /v3/namespaces/<namespace-id>/artifacts/<artifact-name>/versions/<version>/extensions/<plugin-type>/plugins/<plugin-name>
+  description: A plugin contributed by an artifact, grouped by extension (plugin type).
+- name: application_class
+  path: /v3/namespaces/<namespace-id>/classes/apps/<class-name>
+  description: Application classes discoverable from deployed artifacts.
+- name: program
+  path: /v3/namespaces/<namespace-id>/apps/<app-id>/<program-type>/<program-id>
+  program_types:
+  - services
+  - workflows
+  - mapreduce
+  - workers
+  - spark
+  description: An executable program contained in an application.
+- name: run
+  path: /v3/namespaces/<namespace-id>/apps/<app-id>/<program-type>/<program-id>/runs/<run-id>
+  description: A single execution of a program, identified by a UUID run-id.
+- name: schedule
+  path: /v3/namespaces/<namespace-id>/apps/<app-id>/schedules/<schedule-id>
+  description: A trigger that starts a program on a time or event condition.
+- name: preference
+  path: /v3/namespaces/<namespace-id>/apps/<app-id>/preferences
+  description: >-
+    Hierarchical configuration key/value pairs resolved across the instance, namespace, application,
+    and program scopes.
+- name: artifact_property
+  path: /v3/namespaces/<namespace-id>/artifact/<artifact-name>/versions/<version>/properties/<key>
+  description: Arbitrary key/value properties attached to an artifact version.
+relationships:
+- from: namespace
+  to: application
+  type: has_many
+  via: /apps/
+- from: namespace
+  to: artifact
+  type: has_many
+  via: /artifacts/
+- from: application
+  to: application_version
+  type: has_many
+  via: /versions
+- from: application
+  to: program
+  type: has_many
+  via: /<program-type>/
+- from: application
+  to: schedule
+  type: has_many
+  via: /schedules/
+- from: application
+  to: preference
+  type: has_one
+  via: /preferences
+- from: program
+  to: run
+  type: has_many
+  via: /runs/
+- from: artifact
+  to: plugin
+  type: has_many
+  via: /extensions/<plugin-type>/plugins/
+- from: artifact
+  to: artifact_property
+  type: has_many
+  via: /properties/
+- from: application
+  to: artifact
+  type: belongs_to
+  via: artifact reference in the application creation request

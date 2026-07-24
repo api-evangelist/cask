@@ -1,0 +1,45 @@
+generated: '2026-07-20'
+method: searched
+source: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477692124/Microservices+Introduction
+format: http-status
+notes: >-
+  CDAP does not use RFC 9457 application/problem+json. It publishes a single flat table of status
+  codes, described as "common status codes returned for all HTTP calls" — the docs note these are
+  not necessarily repeated in each individual endpoint's description but any request may return them.
+problems:
+- status: 200
+  title: OK
+  detail: The request returned successfully.
+- status: 400
+  title: Bad Request
+  detail: The request had a combination of parameters that is not recognized.
+  remediation: Check the path and query parameters against the endpoint documentation.
+- status: 401
+  title: Unauthorized
+  detail: The request did not contain an authentication token.
+  remediation: >-
+    Obtain an access token from the CDAP authentication server and send it as
+    "Authorization: Bearer <access-token>". Applies when security.enabled=true.
+  see_also: authentication/cask-authentication.yml
+- status: 403
+  title: Forbidden
+  detail: >-
+    The request was authenticated but the client does not have permission; requests can fail due to a
+    lack of privilege.
+  remediation: Grant the calling principal the required privilege via CDAP authorization policies.
+  see_also: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477790661/Security+Microservices
+- status: 404
+  title: Not Found
+  detail: The request did not address any of the known URIs.
+- status: 405
+  title: Method Not Allowed
+  detail: A request was received with a method not supported for the URI.
+- status: 409
+  title: Conflict
+  detail: A request could not be completed due to a conflict with the current resource state.
+- status: 500
+  title: Internal Server Error
+  detail: An internal error occurred while processing the request.
+- status: 501
+  title: Not Implemented
+  detail: A request contained a query that is not supported by this API.

@@ -1,0 +1,78 @@
+generated: '2026-07-20'
+method: searched
+source: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477560940/Command+Line+Reference
+docs: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477560940/Command+Line+Reference
+name: CDAP CLI
+binary: cdap cli
+description: >-
+  The CDAP Command Line Interface lets you interact with a CDAP server from a shell, similar to the
+  HBase or bash shells. It ships inside the CDAP Sandbox by default and installs to /opt/cdap/cli on
+  Distributed CDAP.
+install:
+- method: bundled
+  detail: Included by default within the CDAP Sandbox.
+  command: ./bin/cdap cli
+- method: distributed-package
+  detail: Installed to /opt/cdap/cli on a Distributed CDAP installation.
+  command: /opt/cdap/cli/bin/cdap cli
+- method: windows
+  command: .\bin\cdap.bat cli
+modes:
+- name: interactive
+  detail: >-
+    Run `cdap cli` with no arguments to enter a shell. The prompt shows the connected server and
+    namespace, e.g. "cdap (http://localhost:11015/namespace:default)>". Enter `help` to list all
+    available commands.
+- name: non-interactive
+  detail: Pass the command as an argument, e.g. `cdap cli list apps`.
+usage: |
+  cdap cli [--autoconnect <true|false>] [--debug] [--help]
+           [--verify-ssl <true|false>] [--uri <uri>] [--link <uri>]
+           [--namespace <namespace>] [--script <script-file>] [-r |-retries N]
+options:
+- flag: --autoconnect
+  alias: --a
+  argument: true|false
+  description: Whether to try to autoconnect to a CDAP instance on startup.
+- flag: --debug
+  description: Enable debug output.
+- flag: --help
+  description: Show usage.
+- flag: --verify-ssl
+  argument: true|false
+  description: Whether to verify the SSL certificate when connecting to an SSL-enabled CDAP server.
+- flag: --uri
+  argument: <uri>
+  description: URI of the CDAP instance to connect to.
+- flag: --link
+  argument: <uri>
+  description: >-
+    Link to a remote CDAP server, e.g. `--link example.com` (default port 11015) or
+    `--link https://example.com` for an SSL-enabled server.
+- flag: --namespace
+  argument: <namespace>
+  description: Namespace to operate in.
+- flag: --script
+  argument: <script-file>
+  description: Run commands from a script file.
+- flag: -r
+  alias: -retries
+  argument: N
+  description: Number of retries.
+commands:
+- name: connect-link
+  usage: connect-link example.com
+  description: Change the CDAP server the CLI is connected to.
+- name: help
+  description: List all available CLI commands.
+- name: list apps
+  description: List all applications currently deployed to CDAP.
+authentication:
+  detail: >-
+    When connecting to secure CDAP instances the CLI looks for an access token at
+    ~/.cdap.accesstoken.<hostname> and uses it if valid; otherwise it prompts for credentials,
+    acquires a token from the CDAP instance, and caches it there for the rest of the session.
+  token_cache: ~/.cdap.accesstoken.<hostname>
+related:
+- name: Wrangler Command Line Reference
+  url: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/379748488/Wrangler+Command+Line+Reference

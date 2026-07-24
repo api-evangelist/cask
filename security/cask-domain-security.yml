@@ -1,0 +1,67 @@
+generated: '2026-07-20'
+method: probed
+source: live DNS/TLS/HTTP probes of the surviving Cask/CDAP hosts
+notes: >-
+  Cask Data's own domain (cask.co) no longer serves the company site — it resolves to a WP Engine
+  parking host whose certificate is issued for *.wpengine.com and whose HTTP responses are 404.
+  The CDAP documentation host docs.cdap.io serves an expired certificate (expired 2023-09-27) and,
+  when the certificate error is bypassed, 301-redirects to the CDAP Confluence wiki. The living,
+  healthy host is cdap.io.
+hosts:
+- host: cdap.io
+  https: true
+  http_status: 200
+  tls_version: TLSv1.3
+  cert_subject: CN=cdap.io
+  cert_expires: Oct 13 16:13:47 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: docs.cdap.io
+  https: false
+  https_error: certificate has expired
+  tls_version: TLSv1.3
+  cert_subject: CN=docs.cdap.io
+  cert_expires: Sep 27 17:03:17 2023 GMT
+  hsts: false
+  note: 301 redirects to https://cdap.atlassian.net/wiki/spaces/DOCS/overview once the cert error is bypassed
+- host: cask.co
+  https: false
+  https_error: certificate name mismatch (CN=*.wpengine.com)
+  http_status: 404
+  hsts: false
+  note: company domain no longer serves Cask content
+- host: cdap.atlassian.net
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  8 23:59:59 2026 GMT
+  hsts: true
+  hsts_max_age: 63072000
+  note: third-party documentation host (Atlassian Confluence Cloud)
+domains:
+- domain: cdap.io
+  dnssec: false
+  caa:
+  - 0 issue "pki.goog"
+  - 0 issue "letsencrypt.org"
+  spf: true
+  spf_record: v=spf1 -all
+  dmarc: true
+  dmarc_policy: reject
+- domain: cask.co
+  dnssec: false
+  caa:
+  - 0 issue "letsencrypt.org"
+  - 0 issue "pki.goog"
+  spf: true
+  spf_record: v=spf1 include:_spf.google.com include:mktomail.com include:spf.mandrillapp.com ~all
+  dmarc: true
+  dmarc_policy: none
+- domain: atlassian.net
+  dnssec: false
+  caa:
+  - 0 issue "amazon.com"
+  - 0 issue "digicert.com"
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+  note: third-party documentation host, not operated by Cask/CDAP
