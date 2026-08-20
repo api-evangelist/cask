@@ -41,6 +41,20 @@ tags:
 - Company
 - Big Data
 - Data Analytics
+- Data Pipeline
+- Data Integration
+- ETL
+- Hadoop
+- Spark
+- Open-Source
+- CDAP
+- Metadata
+- Data Governance
+- Acquired
+tags_raw:
+- Company
+- Big Data
+- Data Analytics
 - Data Pipelines
 - Data Integration
 - ETL
@@ -87,6 +101,10 @@ apis:
   humanURL: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477560983/Lifecycle+Microservices
   baseURL: http://localhost:11015/v3
   tags:
+  - Lifecycle
+  - Application
+  - Programs
+  tags_raw:
   - Lifecycle
   - Applications
   - Programs
@@ -139,6 +157,9 @@ apis:
   humanURL: https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477561041/Namespace+Microservices
   baseURL: http://localhost:11015/v3
   tags:
+  - Namespaces
+  - Multi-Tenancy
+  tags_raw:
   - Namespaces
   - Multi-tenancy
 - aid: cask:cdap-pipeline
