@@ -169,7 +169,7 @@ apis:
   baseURL: http://localhost:11015/v3
   tags:
   - Namespaces
-  - Multi-tenancy
+  - Multi-Tenancy
   tags_raw:
   - Namespaces
   - Multi-tenancy
