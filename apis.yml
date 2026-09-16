@@ -196,6 +196,10 @@ apis:
   baseURL: http://localhost:11015/v3
   tags:
   - Replication
+  - Change Data Capture
+  - Data Integration
+  tags_raw:
+  - Replication
   - CDC
   - Data Integration
 - aid: cask:cdap-security
