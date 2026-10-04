@@ -60,7 +60,7 @@ tags:
 - ETL
 - Hadoop
 - Spark
-- Open-Source
+- Open Source
 - CDAP
 - Metadata
 - Data Governance
@@ -79,6 +79,7 @@ tags_raw:
 - Metadata
 - Data Governance
 - Acquired
+- Open-Source
 apis:
 - aid: cask:cdap-microservices
   name: CDAP Microservices API
@@ -200,7 +201,7 @@ apis:
   - Data Integration
   tags_raw:
   - Replication
-  - CDC
+  - Change Data Capture
   - Data Integration
 - aid: cask:cdap-security
   name: CDAP Security Microservices
