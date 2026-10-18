@@ -142,6 +142,10 @@ apis:
   baseURL: http://localhost:11015/v3
   tags:
   - Metadata
+  - Data Lineage
+  - Data Governance
+  tags_raw:
+  - Metadata
   - Lineage
   - Data Governance
 - aid: cask:cdap-metrics
