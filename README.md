@@ -64,6 +64,67 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Cask is a company surfaced as a portfolio company of a16z and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+> **Acquired or rebranded.** This company was acquired, merged or renamed. Its API, if it still exists, is offered under another name. This profile is kept as a historical record and is not maintained or rated.
 
-Backed by: a16z
+Cask Data, Inc. was the enterprise big-data startup, backed by Andreessen Horowitz, that built and open-sourced CDAP — the Cask Data Application Platform — a framework for building and running data analytic applications and data pipelines on Hadoop, Spark, Kubernetes, and the cloud. Cask was acquired by Google Cloud; CDAP continues as an Apache-2.0 open source project under the github.com/cdapio organization and powers Google Cloud Data Fusion. CDAP's programmatic surface is its HTTP RESTful "Microservices" API — 21 documented service families (Lifecycle, Artifact, Metadata, Metrics, Logging, Namespace, Pipeline, Preferences, Profile, Provisioners, Replication, Reports, Security, Service, Workflow, Monitor, Dashboard, Configuration, Transaction Service, System Workers) served under a /v3 path prefix from a self-hosted CDAP router, with Bearer access tokens issued by the CDAP authentication server. The company's own cask.co domain and developer portal are gone; the surviving surfaces are cdap.io, the CDAP documentation wiki, the cdapio GitHub organization, and the io.cdap.cdap / co.cask.cdap artifact groups on Maven Central.
+
+**Areas:** Company · Big Data · Data Analytics · Data Pipeline · Data Integration · ETL · Hadoop · Spark · Open Source · CDAP · Metadata · Data Governance
+
+## Cask on APIs.io (historical record)
+
+Everything profiled for Cask is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/cask/](https://apis.io/providers/cask/)** — or go straight to one of the APIs or properties below.
+
+### APIs (12)
+
+- [CDAP Microservices API](https://apis.io/apis/cask/cdap-microservices/) — The CDAP HTTP RESTful API, documented as "Microservices". All endpoints sit under a /v3 path prefix on a self-hosted CDAP router (default port 11015, or…
+- [CDAP Lifecycle Microservices](https://apis.io/apis/cask/cdap-lifecycle/) — Deploy, start, stop, and manage the lifecycle of CDAP applications and the programs they contain within a namespace.
+- [CDAP Artifact Microservices](https://apis.io/apis/cask/cdap-artifact/) — Manage CDAP artifacts — the packaged application and plugin JARs that applications are created from — including deployment, versioning, and plugin inspection.
+- [CDAP Metadata Microservices](https://apis.io/apis/cask/cdap-metadata/) — Search, annotate, and retrieve business and technical metadata and lineage for CDAP entities such as applications, datasets, programs, and fields.
+- [CDAP Metrics Microservices](https://apis.io/apis/cask/cdap-metrics/) — Query the metrics CDAP collects for system and user programs, including time-series queries across metric contexts and tags.
+- [CDAP Logging Microservices](https://apis.io/apis/cask/cdap-logging/) — Retrieve and download logs emitted by CDAP system services and by user applications and programs, with filtering by time range and log level.
+- [CDAP Namespace Microservices](https://apis.io/apis/cask/cdap-namespace/) — Create, list, and delete CDAP namespaces — the multi-tenancy boundary that isolates applications, datasets, and metadata. The cdap, default, and system…
+- [CDAP Pipeline Microservices](https://apis.io/apis/cask/cdap-pipeline/) — Programmatically create, deploy, run, and inspect CDAP data pipelines (the Hydrator / Data Fusion pipeline application type) and their plugin configurations.
+- [CDAP Replication Microservices](https://apis.io/apis/cask/cdap-replication/) — Manage CDAP replication (change data capture) jobs that stream changes from source databases into analytic targets such as BigQuery.
+- [CDAP Security Microservices](https://apis.io/apis/cask/cdap-security/) — Manage CDAP secure store keys and authorization privileges, roles, and policies for principals operating against a security-enabled CDAP cluster.
+- [CDAP Workflow Microservices](https://apis.io/apis/cask/cdap-workflow/) — Inspect and control CDAP workflows — multi-node program orchestration — including run records, node states, local datasets, and workflow tokens.
+- [CDAP Preferences Microservices](https://apis.io/apis/cask/cdap-preferences/) — Read and write preferences — the hierarchical configuration key/value pairs resolved across the instance, namespace, application, and program scopes.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Cask Authentication](https://apis.io/security/cask/cask-authentication/)
+- [Cask Domain Security](https://apis.io/security/cask/cask-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Documentation](https://cdap.atlassian.net/wiki/spaces/DOCS/overview)
+- [Getting started](https://cdap.io/get-started/)
+- [API reference](https://cdap.atlassian.net/wiki/spaces/DOCS/pages/477593807/CDAP+Microservices+Guide)
+- [Support](https://cdap.io/community/)
+- [Blog](https://medium.com/cdapio)
+- [Terms of service](https://policies.google.com/terms)
+- [Privacy policy](https://policies.google.com/privacy)
+- [GitHub](https://github.com/cdapio)
+
+## API Evangelist rating
+
+**Not rated** — this company is recorded as acquired or rebranded, so no score is published. If it is in fact operating, say so on this repository and it will be re-profiled.
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Cask: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/cask/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
